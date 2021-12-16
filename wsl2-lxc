@@ -1,0 +1,34 @@
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install -yqq daemonize dbus-user-session fontconfig
+sudo daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
+exec sudo nsenter -t $(pidof systemd) -a su - $LOGNAME
+
+#sudp lxd init
+config: {}
+networks: []
+storage_pools:
+- config:
+    size: 30GB
+  description: ""
+  name: default
+  driver: btrfs
+profiles:
+- config: {}
+  description: ""
+  devices:
+    eth0:
+      name: eth0
+      nictype: macvlan
+      parent: eth0
+      type: nic
+    root:
+      path: /
+      pool: default
+      type: disk
+  name: default
+cluster: null
+ 
+sudo mkdir /usr/lib/x86_64-linux-gnu/lxc/sys
+sudo mount sysfs -t sysfs /usr/lib/x86_64-linux-gnu/lxc/sys
+sudo apt-get install -y privoxy
