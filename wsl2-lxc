@@ -1,6 +1,8 @@
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install -yqq daemonize dbus-user-session fontconfig
+
+# This has to be run every time wsl is started:
 sudo daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
 exec sudo nsenter -t $(pidof systemd) -a su - $LOGNAME
 
