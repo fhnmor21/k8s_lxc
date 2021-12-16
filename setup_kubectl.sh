@@ -1,0 +1,1 @@
+scp root@10.45.241.192:/etc/kubernetes/admin.conf ~/.kube/config
