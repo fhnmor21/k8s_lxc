@@ -4,7 +4,8 @@ echo "[TASK 7] Pull required containers"
 kubeadm config images pull 
 
 echo "[TASK 8] Initialize Kubernetes Cluster"
-kubeadm init --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=all | tee /root/kubeinit.log
+kubeadm init --ignore-preflight-errors=all >> /root/kubeinit.log >> /root/kubeinit.log 2>&1
+#kubeadm init --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=all | tee /root/kubeinit.log
 
 echo "[TASK 9] Copy kube admin config to root user .kube directory"
 mkdir /root/.kube

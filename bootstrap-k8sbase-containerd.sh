@@ -17,8 +17,7 @@ apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 
 echo "[TASK 3] Install Kubernetes components (kubeadm, kubelet and kubectl)"
 apt install -qq -y kubeadm kubelet kubectl 
-#echo 'KUBELET_EXTRA_ARGS="--fail-swap-on=false"' > /etc/default/kubelet
-echo 'KUBELET_EXTRA_ARGS=""' > /etc/default/kubelet
+kubeadm init phase kubelet-start
 systemctl restart kubelet
 
 echo "[TASK 4] Enable ssh password authentication"
@@ -31,10 +30,11 @@ echo -e "kubeadmin\nkubeadmin" | passwd root
 echo "export TERM=xterm" >> /etc/bash.bashrc
 
 echo "[TASK 6] Install additional packages"
-apt install -qq -y net-tools 
+apt install -qq -y net-tools
+apt autoremove -y
 
 # Hack required to provision K8s v1.15+ in LXC containers
-mknod /dev/kmsg c 1 11
-echo 'mknod /dev/kmsg c 1 11' >> /etc/rc.local
-chmod +x /etc/rc.local
+# mknod /dev/kmsg c 1 11
+# echo 'mknod /dev/kmsg c 1 11' >> /etc/rc.local
+# chmod +x /etc/rc.local
 
