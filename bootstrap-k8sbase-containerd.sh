@@ -16,7 +16,7 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main" 
 
 echo "[TASK 3] Install Kubernetes components (kubeadm, kubelet and kubectl)"
-apt install -qq -y kubeadm kubelet kubectl 
+apt install -qq -y kubeadm=1.22.0-00 kubelet=1.22.0-00 kubectl=1.22.0-00 
 kubeadm init phase kubelet-start
 systemctl restart kubelet
 
