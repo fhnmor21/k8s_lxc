@@ -1,3 +1,8 @@
+### Ref:
+https://kubernetes.io/docs/setup/production-environment/
+https://kvaps.medium.com/run-kubernetes-in-lxc-container-f04aa94b6c9c
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
+
 ### Setting up K8s Cluster using LXC/LXD 
 > **Note:** For development purpose and not recommended for Production use
 
