@@ -9,7 +9,7 @@ do
   sleep 10
   echo "==> Running base provisioner script"
   cat bootstrap-k8sbase-docker.sh | lxc exec $node bash
-  # lxc config device add $node "kmsg" unix-char source="/dev/kmsg" path="/dev/kmsg"
+  lxc file push /boot/config-* ${node}/boot/
   echo
 done
 

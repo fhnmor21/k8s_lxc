@@ -8,9 +8,9 @@ apt update
 apt install -y docker-ce=5:20.10.12~3-0~ubuntu-focal containerd.io
 
 # move docker to systemd cgroup
-echo "{" >/etc/docker/daemon.json
-echo "  "exec-opts": ["native.cgroupdriver=systemd"]" >>/etc/docker/daemon.json
-echo ">" >>/etc/docker/daemon.json
+echo '{' >/etc/docker/daemon.json
+echo '  "exec-opts": ["native.cgroupdriver=systemd"]' >>/etc/docker/daemon.json
+echo '}' >>/etc/docker/daemon.json
 systemctl restart docker
 
 echo "[TASK 2] Add apt repo for kubernetes"
