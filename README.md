@@ -1,4 +1,5 @@
 ### Ref:
+https://github.com/corneliusweig/kubernetes-lxd
 https://kubernetes.io/docs/setup/production-environment/
 https://kvaps.medium.com/run-kubernetes-in-lxc-container-f04aa94b6c9c
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
