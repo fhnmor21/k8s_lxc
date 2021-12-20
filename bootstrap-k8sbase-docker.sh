@@ -20,8 +20,7 @@ apt update
 
 echo "[TASK 3] Install Kubernetes components (kubeadm, kubelet and kubectl)"
 apt install -qq -y kubeadm=1.22.0-00 kubelet=1.22.0-00 kubectl=1.22.0-00 
-#apt update && apt install -y kubeadm=1.18.5-00 kubelet=1.18.5-00 kubectl=1.18.5-00
-#systemctl restart kubelet
+apt-mark hold kubelet kubeadm kubectl docker-ce
 
 echo "[TASK 4] Enable ssh password authentication"
 sed -i 's/^PasswordAuthentication .*/PasswordAuthentication yes/' /etc/ssh/sshd_config
@@ -36,7 +35,7 @@ echo "[TASK 6] Install additional packages"
 apt install -qq -y net-tools conntrack
 apt autoremove -y
 
-mknod /dev/kmsg c 1 11
-echo '#!/bin/sh -e' >> /etc/rc.local
-echo 'mknod /dev/kmsg c 1 11' >> /etc/rc.local
-chmod +x /etc/rc.local
+# mknod /dev/kmsg c 1 11
+# echo '#!/bin/sh -e' >> /etc/rc.local
+# echo 'mknod /dev/kmsg c 1 11' >> /etc/rc.local
+# chmod +x /etc/rc.local
