@@ -5,6 +5,13 @@ kubeadm config images pull
 
 echo "[TASK 8] Initialize Kubernetes Cluster"
 kubeadm init --apiserver-advertise-address=192.168.0.129 --pod-network-cidr=192.168.1.0/16 --ignore-preflight-errors=all #>> /root/kubeinit.log 2>&1
+
+echo FIX Doker shared mount
+# vim /lib/systemd/system/docker.service 
+# > MountFlags=shared
+# systemctl daemon-reload
+# systemctl restart docker
+
 kubeadm init phase addon all
 
 echo "[TASK 9] Copy kube admin config to root user .kube directory"

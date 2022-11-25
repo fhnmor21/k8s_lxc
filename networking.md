@@ -7,6 +7,9 @@ https://docs.docker.com/network/bridge/
 https://jamesdefabia.github.io/docs/getting-started-guides/docker-multinode/master/
 https://www.conjur.org/blog/tutorial-spin-up-your-kubernetes-in-docker-cluster-and-they-will-come/
 
+# wsl network
+https://www.youtube.com/watch?v=yCK3easuYm4
+
 
 kube proxy issue
 https://serverfault.com/questions/1063166/kube-proxy-wont-start-in-minikube-because-of-permission-denied-issue-with-proc

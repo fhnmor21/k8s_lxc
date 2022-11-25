@@ -1,1 +1,2 @@
-scp root@10.45.241.192:/etc/kubernetes/admin.conf ~/.kube/config
+#!/bin/bash
+lxc pull file kmaster:/etc/kubernetes/admin.conf ~/.kube/config

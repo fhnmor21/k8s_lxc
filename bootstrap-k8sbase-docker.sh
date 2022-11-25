@@ -1,5 +1,10 @@
 #!/bin/sh
 
+apt update
+apt autoremove -y
+apt upgrade -y
+apt install -qq -y net-tools conntrack nftables
+
 echo "[TASK 1] Install container runtime"
 apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
@@ -31,10 +36,7 @@ echo "[TASK 5] Set root password"
 echo -e "kubeadmin\nkubeadmin" | passwd root 
 echo "export TERM=xterm" >> /etc/bash.bashrc
 
-echo "[TASK 6] Install additional packages"
-apt install -qq -y net-tools conntrack
-apt autoremove -y
-
+# echo "[TASK 6] Install additional packages"
 # mknod /dev/kmsg c 1 11
 # echo '#!/bin/sh -e' >> /etc/rc.local
 # echo 'mknod /dev/kmsg c 1 11' >> /etc/rc.local

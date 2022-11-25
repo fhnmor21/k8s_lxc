@@ -3,9 +3,13 @@ config:
   limits.memory: 4GB
   limits.memory.swap: false
   linux.kernel_modules: ip_tables,ip6_tables,nf_nat,overlay,br_netfilter
-  raw.lxc: "lxc.apparmor.profile=unconfined\nlxc.cap.drop= \nlxc.cgroup.devices.allow=a\nlxc.mount.auto=proc:rw sys:rw"
-  security.privileged: true
+  raw.lxc: 
+    "lxc.apparmor.profile=unconfined
+    \nlxc.cap.drop= 
+    \nlxc.cgroup.devices.allow=a
+    \nlxc.mount.auto=proc:rw sys:rw"
   security.nesting: true
+  security.privileged: true
 description: LXD profile for Kubernetes
 devices:
   eth0:
@@ -18,4 +22,5 @@ devices:
     pool: default
     type: disk
 name: k8s
-used_by: []
+used_by:
+- /1.0/instances/plutus

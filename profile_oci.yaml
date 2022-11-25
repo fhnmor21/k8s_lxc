@@ -1,0 +1,26 @@
+config:
+  boot.autostart: false
+  limits.cpu: 4
+  limits.memory: 8GB
+  limits.memory.swap: false
+  linux.kernel_modules: ip_tables,ip6_tables,nf_nat,overlay,br_netfilter
+  raw.lxc: |
+    lxc.apparmor.profile=unconfined
+    lxc.mount.auto=proc:rw sys:rw cgroup:rw
+    lxc.cgroup.devices.allow=a
+    lxc.mount.entry = /dev/kmsg dev/kmsg none defaults,bind,create=file
+    lxc.cap.drop=
+  security.nesting: true
+  security.privileged: true
+description: LXD profile for Nested Containers
+devices:
+  eth0:
+    name: eth0
+    nictype: bridged
+    parent: br0
+    type: nic
+  root:
+    path: /
+    pool: default
+    type: disk
+name: oci
